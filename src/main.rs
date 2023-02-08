@@ -20,6 +20,11 @@ fn route(mut uri: &str) -> Option<(&'static str, &'static str)> {
         "/cv/spotify.png" => Some(("www/cv/spotify.png", "image/png")),
         "/cv/windows.png" => Some(("www/cv/windows.png", "image/png")),
         "/cv/photo.jpg" => Some(("www/cv/photo.jpg", "image/jpeg")),
+        "/cv/notion.png" => Some(("www/cv/notion.png", "image/png")),
+        "/cv/man-thinking.jpg" => Some(("www/cv/man-thinking.jpg", "image/jpeg")),
+        "/cv/presentation.png" => Some(("www/cv/presentation.png", "image/png")),
+        "/cv/tel.png" => Some(("www/cv/tel.png", "image/png")),
+        "/cv/mail.png" => Some(("www/cv/mail.png", "image/png")),
         "/cv/" => Some(("www/cv/index.html", "text/html")),
         _ => None,
     }
