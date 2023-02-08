@@ -26,7 +26,7 @@ fn route(uri: &str) -> Option<(&'static str, &'static str)> {
 }
 
 fn main() -> ExitCode {
-    let Ok(socket_addr) = std::env::var("SERVER_ADDR") else {
+    let Ok(socket_addr) = std::env::var("SERVER_ADDRESS") else {
         eprintln!("error: no `SERVER_ADDRESS` in the environment");
         return ExitCode::FAILURE;
     };
@@ -75,6 +75,8 @@ fn main() -> ExitCode {
             return ExitCode::FAILURE;
         }
     };
+
+    println!("listening for {:?}", addresses);
 
     let config = ServerConfig {
         addr: ConfigListenAddr::IP(addresses),
