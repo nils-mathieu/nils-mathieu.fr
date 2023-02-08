@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nils Mathieu</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend&family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        /**
+         * Color Palette solen from Josh Giblette.
+         * <https://dribbble.com/shots/1763596-Color-System/attachments/287340>
+         */
+
+        --charcoal: #262a2e;
+        --base-grey: #EEEEEE;
+        --primary-blue: #2C97DE;
+        --white: #FFFFFF;
+
+        --action: #2C97DE;
+        --success: #2DBDA8;
+        --alert: #EFC663;
+        --notification: #E16070;
+        --pending: #9677DF;
+    }
+
+    body {
+        margin: 0px;
+
+        background-color: var(--charcoal);
+    }
+
+    #introduction {
+        position: relative;
+        display: flex;
+        flex-flow: row nowrap;
+
+        width: 90%;
+        max-width: 1000px;
+        min-width: 700px;
+        height: 240px;
+        box-sizing: border-box;
+
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px 120px 20px 20px;
+        border-radius: 120px;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+
+        background-color: var(--base-grey);
+    }
+
+    #introduction-name {
+        position: absolute;
+        top: 14px;
+        left: 120px;
+        transform: translateY(-100%);
+
+        font-family: 'Lexend', sans-serif;
+        color: var(--base-grey);
+        font-size: 42px;
+    }
+
+    #introduction-photo {
+        width: 200px;
+        height: 200px;
+        min-width: 200px;
+        min-height: 200px;
+
+        margin-right: 20px;
+        border-radius: 100000px;
+
+        background-image: url("photo.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+
+    #introduction-content {
+        flex-grow: 1;
+
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+    #introduction-myself {
+        margin-bottom: 20px;
+
+        font-family: 'Roboto', sans-serif;
+        color: var(--charcoal);
+        font-size: 16px;
+        text-align: justify;
+    }
+
+    #intruduction-tags {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 10px;
+    }
+
+    .introduction-tag {
+        display: inline-flex;
+        gap: 10px;
+
+        padding: 3px 8px;
+        border-radius: 100000px;
+
+        background-color: var(--primary-blue);
+        color: var(--white);
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+
+        font-family: 'Lexend', sans-serif;
+        font-size: 12px;
+
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .introduction-tag:active {
+        transform: translateY(1px);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+</style>
+
+<body>
+    <div id="introduction">
+        <div id="introduction-name">
+            Nils Mathieu
+        </div>
+        <div id="introduction-photo"></div>
+        <div id="introduction-content">
+            <div id="introduction-myself">
+                I'm a motivated and self-driven computer science student yearning to start a software engeenering career. I spend most of my time writing stories, producing music and developing games in Rust or in C. I like to create complex systems and write pretty lines of code. I make sure to understand everything I do and love explaining it to others.
+            </div>
+            <div id="intruduction-tags">
+                <div class="introduction-tag">Rust</div>
+                <div class="introduction-tag">JavaScript</div>
+                <div class="introduction-tag">Math</div>
+                <div class="introduction-tag">TypeScript</div>
+                <div class="introduction-tag">Git</div>
+                <div class="introduction-tag">Signal Processing</div>
+                <div class="introduction-tag">HTML</div>
+                <div class="introduction-tag">CSS</div>
+                <div class="introduction-tag">Optimization</div>
+                <div class="introduction-tag">C++</div>
+                <div class="introduction-tag">Graphics</div>
+                <div class="introduction-tag">Game Engines</div>
+                <div class="introduction-tag">Docker</div>
+                <div class="introduction-tag">C</div>
+                <div class="introduction-tag">Embedded</div>
+                <div class="introduction-tag">Open GL</div>
+                <div class="introduction-tag">Vulkan</div>
+                <div class="introduction-tag">Networking</div>
+                <div class="introduction-tag">Linux</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
