@@ -182,6 +182,7 @@
         background-color: var(--blue);
         color: var(--white);
         box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
 
         font-family: 'Lexend', sans-serif;
         font-size: 12px;
@@ -487,6 +488,20 @@
         font-style: italic;
     }
 
+    #other-tech {
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+
+        width: 60%;
+
+        font-style: italic;
+        color: var(--white);
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        text-align: center;
+    }
+
     #exp-container {
         position: relative;
 
@@ -560,7 +575,7 @@
         text-align: justify;
     }
 
-    #tools-container {
+    #tools {
         position: relative;
 
         display: flex;
@@ -653,28 +668,28 @@
                     I'm a motivated and self-driven computer science student yearning to start a software engeenering career. I spend most of my time writing stories, producing music and developing games in Rust or in C. I like to create complex systems and write pretty lines of code. I make sure to understand everything I do and love explaining it to others.
                 </e>
                 <e id="intruduction-tags">
-                    <e class="introduction-tag">Rust</e>
-                    <e class="introduction-tag">JavaScript</e>
-                    <e class="introduction-tag">Math</e>
-                    <e class="introduction-tag">TypeScript</e>
-                    <e class="introduction-tag">Git</e>
-                    <e class="introduction-tag">C#</e>
-                    <e class="introduction-tag">Signal Processing</e>
-                    <e class="introduction-tag">HTML</e>
-                    <e class="introduction-tag">Optimization</e>
-                    <e class="introduction-tag">C++</e>
-                    <e class="introduction-tag">Game Engines</e>
-                    <e class="introduction-tag">TypeScript</e>
-                    <e class="introduction-tag">Docker</e>
-                    <e class="introduction-tag">C</e>
-                    <e class="introduction-tag">Embedded</e>
-                    <e class="introduction-tag">Open GL</e>
-                    <e class="introduction-tag">CSS</e>
-                    <e class="introduction-tag">Vulkan</e>
-                    <e class="introduction-tag">Networking</e>
-                    <e class="introduction-tag">JavaScript</e>
-                    <e class="introduction-tag">Linux</e>
-                    <e class="introduction-tag">WASM</e>
+                    <a class="introduction-tag" href="#rust">Rust</a>
+                    <a class="introduction-tag" href="#web">JavaScript</a>
+                    <a class="introduction-tag" href="#math">Math</a>
+                    <a class="introduction-tag" href="#web">TypeScript</a>
+                    <a class="introduction-tag" href="#tools">Git</a>
+                    <a class="introduction-tag" href="#c-sharp">C#</a>
+                    <a class="introduction-tag" href="#audio">Signal Processing</a>
+                    <a class="introduction-tag" href="#web">HTML</a>
+                    <a class="introduction-tag" href="#optimization">Optimization</a>
+                    <a class="introduction-tag" href="#c">C++</a>
+                    <a class="introduction-tag" href="#rust">Game Engines</a>
+                    <a class="introduction-tag" href="#web">TypeScript</a>
+                    <a class="introduction-tag" href="#tools">Docker</a>
+                    <a class="introduction-tag" href="#c">C</a>
+                    <a class="introduction-tag" href="#bare-metal">Embedded</a>
+                    <a class="introduction-tag" href="#web">CSS</a>
+                    <a class="introduction-tag" href="#graphics">Vulkan</a>
+                    <a class="introduction-tag" href="#bare-metal">Systems</a>
+                    <a class="introduction-tag" href="#networking">Networking</a>
+                    <a class="introduction-tag" href="#web">JavaScript</a>
+                    <a class="introduction-tag" href="#tools">Linux</a>
+                    <a class="introduction-tag" href="#rust">WASM</a>
                 </e>
             </e>
         </e>
@@ -732,6 +747,8 @@
                     <e class="soft-skill-name">Quick Learner</e>
                     <e class="soft-skill-description">
                         I can quickly learn new technologies, languages or tools. I go as deep as I can to make my understanding of said technology as efficient and correct as possible.
+                        <br><br>
+                        I love learning new things and perfecting what I already know.
                     </e>
                 </e>
                 <e class="soft-skill-separator"></e>
@@ -751,7 +768,7 @@
                 * Please note that the presented percentages are an indication of my overall knowledge and expertise in the language, not my ability to create complex systems or algorithms.
             </e>
             <e id="tech-items">
-                <e class="tech-item">
+                <e class="tech-item" id="rust">
                     <e class="tech-item-name">Rust</e>
                     <e class="tech-info">
                         <e class="tech-description">
@@ -760,16 +777,16 @@
                         <e class="tech-level"><e class="tech-level-inner" value="98%"></e></e>
                     </e>
                 </e>
-                <e class="tech-item">
+                <e class="tech-item" id="c">
                     <e class="tech-item-name">C/C++</e>
                     <e class="tech-info">
                         <e class="tech-description">
                             I am proficient in the C and C++ programming languages. I have used both languages equally during my time at School 42 to create video games, shells, 3D renderers, webservers and various libraries.
                         </e>
-                        <e class="tech-level"><e class="tech-level-inner" value="75%"></e></e>
+                        <e class="tech-level"><e class="tech-level-inner" value="85%"></e></e>
                     </e>
                 </e>
-                <e class="tech-item">
+                <e class="tech-item" id="c-sharp">
                     <e class="tech-item-name">C#</e>
                     <e class="tech-info">
                         <e class="tech-description">
@@ -778,24 +795,27 @@
                         <e class="tech-level"><e class="tech-level-inner" value="60%"></e></e>
                     </e>
                 </e>
-                <e class="tech-item">
+                <e class="tech-item" id="web">
                     <e class="tech-item-name">HTML/CSS/JS/TS</e>
                     <e class="tech-info">
                         <e class="tech-description">
                             I know how to create static web pages with HTML, CSS and JavaScript. This very resume has been crafted manually with those tools. I have <i>some</i> familiarity with React. I have created a simple multiplayer game powered by websocket using those tools.
                         </e>
-                        <e class="tech-level"><e class="tech-level-inner" value="50%"></e></e>
+                        <e class="tech-level"><e class="tech-level-inner" value="70%"></e></e>
                     </e>
                 </e>
-                <e class="tech-item">
+                <e class="tech-item" id="graphics">
                     <e class="tech-item-name">Vulkan</e>
                     <e class="tech-info">
                         <e class="tech-description">
                             I know the outline of the Vulkan API, and know how a rendering pipline works, from the vertex shader to surface presentation. I have written a simple 3D renderer using this API for my own game engine (in Rust). This includes writing custom shader programs in GSLS or WSL and compiling them into SPIR-V modules.
                         </e>
-                        <e class="tech-level"><e class="tech-level-inner" value="45%"></e></e>
+                        <e class="tech-level"><e class="tech-level-inner" value="40%"></e></e>
                     </e>
                 </e>
+            </e>
+            <e id="other-tech">
+                I have tried out many programming languages, such as Python, F#, Haskell, Elm, Zig, Java, Go and many others, but havn't built anything noteworthy with them.
             </e>
         </e>
     </e>
@@ -803,7 +823,7 @@
         <e id="exp-container">
             <e id="exp-title">Experiences</e>
             <e id="exp-items">
-                <e class="exp-item">
+                <e class="exp-item" id="optimization">
                     <e class="exp-item-name">Optimization</e>
                     <e class="exp-item-description">
                         I've always liked optimizing systems, taking every bit of performance I possibly can out of it.
@@ -811,7 +831,7 @@
                         I have a good understanding of how a CPU works, and how my code gets compiled into machine instructions. I think about cache misses, about SIMD, and know how to correctly compare two functions using benchmarks and profiling tools.
                     </e>
                 </e>
-                <e class="exp-item">
+                <e class="exp-item" id="audio">
                     <e class="exp-item-name">Signal Processing</e>
                     <e class="exp-item-description">
                         I have written my own simple audio sequencer, including custom effects such as low-pass and high-pass filters, reverb and delay.
@@ -819,7 +839,7 @@
                         More generally, I have some experience with signal processing and have knowledge about the mathematics and physics behind it.
                     </e>
                 </e>
-                <e class="exp-item">
+                <e class="exp-item" id="bare-metal">
                     <e class="exp-item-name">Embedded Systems</e>
                     <e class="exp-item-description">
                         I have experience writting and depoying code to bare metal targets such as older consols or microcontrollers.
@@ -827,25 +847,25 @@
                         I also have written my own (pretty buggy) bootloader in Rust for a (very simple and bare bones) operating system project.
                     </e>
                 </e>
-                <e class="exp-item">
+                <e class="exp-item" id="math">
                     <e class="exp-item-name">Mathematics</e>
                     <e class="exp-item-description">
-                        I have knowledge in various fields of Mathematics including probabilities, combinatorics, and linear algebra.
+                        I have knowledge in various fields of Mathematics including analysis, probabilities, combinatorics, and linear algebra. My studies in <i>classes préparatoires</i> taught me how to correctly articulate mathematical proofs.
                         <br><br>
                         Specifically, I use linear algebra extensively every time I work on a game from scratch, or more generally, anytime I write a real-time application.
                     </e>
                 </e>
-                <e class="exp-item">
+                <e class="exp-item" id="networking">
                     <e class="exp-item-name">Real-time Networking</e>
                     <e class="exp-item-description">
-                        I have experience developing a real-time multiplayer server (and clients to go with it), from scratch, working directly over the TCP protocol.
+                        I have experience developing a real-time multiplayer server (and clients to go with it), from scratch, working directly over the TCP protocol. That includes handshaking, authentification and compression of data frames.
                     </e>
                 </e>
             </e>
         </e>
     </e>
     <e id="part5">
-        <e id="tools-container">
+        <e id="tools">
             <e id="tools-header">
                 <e id="tools-title">Tools</e>
                 <e id="tools-desc">
