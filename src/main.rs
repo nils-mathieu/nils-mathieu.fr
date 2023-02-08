@@ -3,9 +3,6 @@ use std::process::ExitCode;
 
 use tiny_http::{ConfigListenAddr, Header, Response, Server, ServerConfig, SslConfig, StatusCode};
 
-/// Thes files that are specifically authorized.
-const WHITELIST: &[(&str, &str, &str)] = &[];
-
 /// Routes the provided URI to a static file path.
 fn route(mut uri: &str) -> Option<(&'static str, &'static str)> {
     uri = match uri {
@@ -42,7 +39,7 @@ fn main() -> ExitCode {
 
         (addr, port)
     } else {
-        (socket_addr.as_str(), 80)
+        (socket_addr.as_str(), 443)
     };
 
     let addresses: Vec<SocketAddr> = match (addr, port).to_socket_addrs() {
