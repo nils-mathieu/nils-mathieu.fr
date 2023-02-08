@@ -8,7 +8,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <style>
@@ -18,22 +18,67 @@
          * <https://dribbble.com/shots/1763596-Color-System/attachments/287340>
          */
 
-        --charcoal: #262a2e;
-        --base-grey: #EEEEEE;
-        --primary-blue: #2C97DE;
-        --white: #FFFFFF;
-
-        --action: #2C97DE;
-        --success: #2DBDA8;
-        --alert: #EFC663;
-        --notification: #E16070;
-        --pending: #9677DF;
+        --white: #EEEEEE;
+        --blue: #2C97DE;
+        --green: #2DBDA8;
+        --yellow: #EFC663;
+        --red: #E16070;
+        --purple: #9677DF;
+        --black: #353C45;
     }
 
     body {
         margin: 0px;
+        background-color: black;
+    }
 
-        background-color: var(--charcoal);
+    #part1 {
+        display: flex;
+        flex-flow: column nowrap;
+
+        padding-top: 150px;
+        background-color: var(--black);
+
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #part2 {
+        display: flex;
+        flex-flow: column nowrap;
+
+        box-shadow: 0px 15px 10px 20px rgba(0, 0, 0, 0.2);
+
+        display: flex;
+        flex-flow: column nowrap;
+
+        background-color: var(--white);
+    }
+
+    #part3 {
+        display: flex;
+        flex-flow: column nowrap;
+
+        background-color: var(--red);
+
+        box-shadow: 0px 15px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #part4 {
+        display: flex;
+        flex-flow: column nowrap;
+
+        background-color: var(--yellow);
+
+        box-shadow: 0px 15px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #part5 {
+        display: flex;
+        flex-flow: column nowrap;
+
+        background-color: var(--green);
+
+        box-shadow: 0px 15px 10px 20px rgba(0, 0, 0, 0.2);
     }
 
     #introduction {
@@ -47,7 +92,6 @@
         height: 240px;
         box-sizing: border-box;
 
-        margin-top: 100px;
         margin-left: auto;
         margin-right: auto;
         padding: 20px 120px 20px 20px;
@@ -55,7 +99,7 @@
 
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 
-        background-color: var(--base-grey);
+        background-color: var(--white);
     }
 
     #introduction-name {
@@ -65,7 +109,7 @@
         transform: translateY(-100%);
 
         font-family: 'Lexend', sans-serif;
-        color: var(--base-grey);
+        color: var(--white);
         font-size: 42px;
     }
 
@@ -94,7 +138,7 @@
 
     #introduction-myself {
         font-family: 'Roboto', sans-serif;
-        color: var(--charcoal);
+        color: var(--black);
         font-size: 16px;
         text-align: justify;
     }
@@ -112,7 +156,7 @@
         padding: 3px 8px;
         border-radius: 100000px;
 
-        background-color: var(--primary-blue);
+        background-color: var(--blue);
         color: var(--white);
         box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
 
@@ -128,42 +172,678 @@
         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
     }
 
+    #education-container {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 90%;
+        max-width: 750px;
+        min-width: 600px;
+        box-sizing: border-box;
+
+        padding-bottom: 60px;
+        padding-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+
+        border-left: dotted 5px var(--white);
+        border-right: dotted 5px var(--white);
+    }
+
+    #education-title {
+        display: inline-block;
+
+        font-family: 'Lexend', sans-serif;
+        font-size: 28px;
+        color: var(--black);
+
+        padding-left: 60px;
+        padding-right: 20px;
+        border-top-right-radius: 1000px;
+        border-bottom-right-radius: 1000px;
+
+        background-color: var(--white);
+
+        transform: translateX(-30px);
+    }
+
+    #education-table {
+        margin-left: auto;
+        margin-right: auto;
+
+        font-family: 'Roboto', sans-serif;
+        color: var(--white);
+        font-size: 18px;
+    }
+
+    #education-table tr :first-child {
+        text-align: right;
+    }
+
+    #education-table tr :nth-child(2) {
+        padding-left: 10px;
+        padding-right: 10px;
+
+        text-align: center;
+        font-size: 38px;
+        line-height: 0px;
+    }
+
+    #soft-skills-container {
+        display: flex;
+        flex-flow: row-reverse nowrap;
+        justify-content: space-between;
+        align-items: start;
+
+        width: 90%;
+        max-width: 750px;
+        min-width: 600px;
+        box-sizing: border-box;
+
+        padding-bottom: 60px;
+        padding-top: 94px;
+        margin-left: auto;
+        margin-right: auto;
+
+        border-left: dotted 5px var(--black);
+        border-right: dotted 5px var(--black);
+    }
+
+    #soft-skills-title {
+        display: inline-block;
+
+        font-family: 'Lexend', sans-serif;
+        font-size: 28px;
+        color: var(--white);
+
+        padding-left: 20px;
+        padding-right: 60px;
+        border-top-left-radius: 1000px;
+        border-bottom-left-radius: 1000px;
+
+        background-color: var(--black);
+
+        transform: translateX(30px);
+    }
+
+    #soft-skills-items {
+        width: 0px;
+        flex-grow: 1;
+
+        margin-left: 20px;
+    }
+
+    .soft-skill-item {
+        position: relative;
+        display: block;
+    }
+
+    .soft-skill-name {
+        position: absolute;
+        top: -5px;
+        left: -35px;
+        transform: translateX(-100%);
+
+        display: block;
+
+        font-family: 'Lexend', sans-serif;
+        font-size: 20px;
+        color: var(--black);
+        font-weight: bold;
+    }
+
+    .soft-skill-description {
+        display: block;
+        text-align: justify;
+
+        font-family: 'Roboto', sans-serif;
+        color: var(--black);
+        font-size: 16px;
+    }
+
+    .soft-skill-separator {
+        display: block;
+
+        width: 50px;
+        height: 3px;
+
+        background-color: rgba(0, 0, 0, 0.1);
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+
+        border-radius: 2000px;
+    }
+
+    #tech-container {
+        position: relative;
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: start;
+
+        width: 90%;
+        max-width: 750px;
+        min-width: 600px;
+        box-sizing: border-box;
+
+        padding-bottom: 60px;
+        padding-top: 94px;
+        margin-left: auto;
+        margin-right: auto;
+
+        border-left: dotted 5px var(--white);
+        border-right: dotted 5px var(--white);
+    }
+
+    #tech-title {
+        display: inline-block;
+
+        font-family: 'Lexend', sans-serif;
+        font-size: 28px;
+        color: var(--red);
+
+        padding-left: 60px;
+        padding-right: 20px;
+        border-top-right-radius: 1000px;
+        border-bottom-right-radius: 1000px;
+
+        background-color: var(--white);
+
+        transform: translateX(-30px);
+    }
+
+    #tech-items {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .tech-item {
+        display: block;
+        text-align: justify;
+
+        margin-top: 15px;
+
+        font-family: 'Roboto', sans-serif;
+        color: var(--white);
+        font-size: 16px;
+    }
+
+    .tech-item:not(:first-child) {
+        margin-top: 30px;
+    }
+
+    .tech-item-name {
+        display: block;
+
+        font-family: 'Lexend', sans-serif;
+        font-size: 28px;
+        color: var(--white);
+        font-weight: bold;
+    }
+
+    .tech-item:nth-child(odd) .tech-item-name {
+        text-align: left;
+    }
+    .tech-item:nth-child(even) .tech-item-name {
+        text-align: right;
+    }
+
+    .tech-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .tech-item:nth-child(odd) .tech-info {
+        flex-flow: row nowrap;
+    }
+    .tech-item:nth-child(even) .tech-info {
+        flex-flow: row-reverse nowrap;
+    }
+
+    .tech-description {
+        flex-grow: 2;
+        display: block;
+
+        flex-basis: 0;
+    }
+
+    .tech-level {
+        flex-grow: 1;
+        display: block;
+        flex-basis: 0;
+
+        height: 20px;
+
+        border-radius: 100000px;
+        border: solid 3px var(--white)
+    }
+
+    .tech-item:nth-child(odd) .tech-level {
+        margin-left: 20px;
+    }
+    .tech-item:nth-child(even) .tech-level {
+        margin-right: 20px;
+    }
+
+
+    .tech-level-inner {
+        display: block;
+
+        color: var(--red);
+        font-family: 'Lexend', sans-serif;
+        font-size: 12px;
+        text-align: right;
+        padding-right: 10px;
+
+        background-color: var(--white);
+        height: 100%;
+        box-sizing: border-box;
+
+        border-radius: 10000px;
+        border: 2px solid var(--red);
+    }
+
+    #tech-percentages {
+        position: absolute;
+        right: -20px;
+        top: 220px;
+        transform: translateX(100%);
+
+        font-family: 'Roboto', sans-serif;
+        color: var(--white);
+        font-size: 14px;
+        text-align: justify;
+
+        width: 200px;
+        font-style: italic;
+    }
+
+    #exp-container {
+        position: relative;
+
+        display: flex;
+        flex-flow: row-reverse nowrap;
+        justify-content: space-between;
+        align-items: start;
+
+        width: 90%;
+        max-width: 750px;
+        min-width: 600px;
+        box-sizing: border-box;
+
+        padding-bottom: 60px;
+        padding-top: 94px;
+        margin-left: auto;
+        margin-right: auto;
+
+        border-left: dotted 5px var(--black);
+        border-right: dotted 5px var(--black);
+    }
+
+    #exp-title {
+        display: inline-block;
+
+        font-family: 'Lexend', sans-serif;
+        font-size: 28px;
+        color: var(--yellow);
+
+        padding-left: 20px;
+        padding-right: 60px;
+        border-top-left-radius: 1000px;
+        border-bottom-left-radius: 1000px;
+
+        background-color: var(--black);
+
+        transform: translateX(30px);
+    }
+
+    #exp-items {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+    #exp-items {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .exp-item:not(:first-child) {
+        margin-top: 30px;
+    }
+
+    .exp-item-name {
+        display: block;
+
+        font-family: 'Lexend', sans-serif;
+        font-size: 28px;
+        color: var(--black);
+        font-weight: bold;
+
+        text-align: center;
+    }
+
+    .exp-item-description {
+        display: block;
+
+        font-family: 'Roboto', sans-serif;
+        color: var(--black);
+        font-size: 16px;
+        text-align: justify;
+    }
+
+    #tools-container {
+        position: relative;
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: start;
+
+        width: 90%;
+        max-width: 750px;
+        min-width: 600px;
+        box-sizing: border-box;
+
+        padding-bottom: 60px;
+        padding-top: 94px;
+        margin-left: auto;
+        margin-right: auto;
+
+        border-left: dotted 5px var(--white);
+        border-right: dotted 5px var(--white);
+    }
+
+    #tools-title {
+        display: inline-block;
+
+        font-family: 'Lexend', sans-serif;
+        font-size: 28px;
+        color: var(--green);
+
+        padding-left: 60px;
+        padding-right: 20px;
+        border-top-right-radius: 1000px;
+        border-bottom-right-radius: 1000px;
+
+        background-color: var(--white);
+
+        transform: translateX(-30px);
+    }
+
+    #tools-header {
+        display: flex;
+        flex-flow: row nowrap;
+
+        margin-right: 20px;
+    }
+
+    #tools-desc {
+
+        font-family: 'Roboto', sans-serif;
+        color: var(--white);
+        font-size: 16px;
+        text-align: justify;
+    }
+
+    #tool-items {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        gap: 40px;
+        box-sizing: border-box;
+
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+
+        margin-top: 50px;
+    }
+
+    .tool-item {
+        width: 80px;
+        height: 80px;
+
+        background-position: center;
+        background-size: cover;
+    }
 </style>
 
 <body>
-    <div id="introduction">
-        <div id="introduction-name">
-            Nils Mathieu
-        </div>
-        <div id="introduction-photo"></div>
-        <div id="introduction-content">
-            <div id="introduction-myself">
-                I'm a motivated and self-driven computer science student yearning to start a software engeenering career. I spend most of my time writing stories, producing music and developing games in Rust or in C. I like to create complex systems and write pretty lines of code. I make sure to understand everything I do and love explaining it to others.
-            </div>
-            <div id="intruduction-tags">
-                <div class="introduction-tag">Rust</div>
-                <div class="introduction-tag">JavaScript</div>
-                <div class="introduction-tag">Math</div>
-                <div class="introduction-tag">TypeScript</div>
-                <div class="introduction-tag">Git</div>
-                <div class="introduction-tag">Signal Processing</div>
-                <div class="introduction-tag">HTML</div>
-                <div class="introduction-tag">CSS</div>
-                <div class="introduction-tag">Optimization</div>
-                <div class="introduction-tag">C++</div>
-                <div class="introduction-tag">Graphics</div>
-                <div class="introduction-tag">Game Engines</div>
-                <div class="introduction-tag">Docker</div>
-                <div class="introduction-tag">C</div>
-                <div class="introduction-tag">Embedded</div>
-                <div class="introduction-tag">Open GL</div>
-                <div class="introduction-tag">Vulkan</div>
-                <div class="introduction-tag">Networking</div>
-                <div class="introduction-tag">Linux</div>
-                <div class="introduction-tag">WASM</div>
-            </div>
-        </div>
-    </div>
+    <e id="part1">
+        <e id="introduction">
+            <e id="introduction-name">
+                Nils Mathieu
+            </e>
+            <e id="introduction-photo"></e>
+            <e id="introduction-content">
+                <e id="introduction-myself">
+                    I'm a motivated and self-driven computer science student yearning to start a software engeenering career. I spend most of my time writing stories, producing music and developing games in Rust or in C. I like to create complex systems and write pretty lines of code. I make sure to understand everything I do and love explaining it to others.
+                </e>
+                <e id="intruduction-tags">
+                    <e class="introduction-tag">Rust</e>
+                    <e class="introduction-tag">JavaScript</e>
+                    <e class="introduction-tag">Math</e>
+                    <e class="introduction-tag">TypeScript</e>
+                    <e class="introduction-tag">Git</e>
+                    <e class="introduction-tag">C#</e>
+                    <e class="introduction-tag">Signal Processing</e>
+                    <e class="introduction-tag">HTML</e>
+                    <e class="introduction-tag">Optimization</e>
+                    <e class="introduction-tag">C++</e>
+                    <e class="introduction-tag">Game Engines</e>
+                    <e class="introduction-tag">TypeScript</e>
+                    <e class="introduction-tag">Docker</e>
+                    <e class="introduction-tag">C</e>
+                    <e class="introduction-tag">Embedded</e>
+                    <e class="introduction-tag">Open GL</e>
+                    <e class="introduction-tag">CSS</e>
+                    <e class="introduction-tag">Vulkan</e>
+                    <e class="introduction-tag">Networking</e>
+                    <e class="introduction-tag">Python</e>
+                    <e class="introduction-tag">JavaScript</e>
+                    <e class="introduction-tag">Linux</e>
+                    <e class="introduction-tag">WASM</e>
+                </e>
+            </e>
+        </e>
+        <e id="education-container">
+            <e id="education-title">Education</e>
+            <table id="education-table">
+                <tr>
+                    <td>2019</td>
+                    <td>•</td>
+                    <td>Baccalauréat</td>
+                </tr>
+                <tr>
+                    <td>2019 - 2021</td>
+                    <td>•</td>
+                    <td>Classe Préparatoire</td>
+                </tr>
+                <tr>
+                    <td>2021 - 2022</td>
+                    <td>•</td>
+                    <td>School 42</td>
+                </tr>
+            </table>
+        </e>
+    </e>
+    <e id="part2">
+        <e id="soft-skills-container">
+            <e id="soft-skills-title">Soft Skills</e>
+            <e id="soft-skills-items">
+                <e class="soft-skill-item">
+                    <e class="soft-skill-name">Dynamic</e>
+                    <e class="soft-skill-description">
+                        I can quickly adapt my work and method to new and unexpected constraints within the development of a complex system. This includes properly documenting the code to make it easier for other to modify it with no fear.
+                        <br><br>
+                        I develop systems knowing that they will be modified in the future (new features, bug fixes). I know when, why, and how to correctly add complexity to a code base.
+                    </e>
+                </e>
+                <e class="soft-skill-separator"></e>
+                <e class="soft-skill-item">
+                    <e class="soft-skill-name">Comunicative</e>
+                    <e class="soft-skill-description">
+                        I can communicate with other members of the team, including non-developers, about what I do and what I need. I can explain fairly difficult conscepts in plain English and more generally, I like to teach what I know to others.
+                        <br><br>
+                        I'm a native French speaker with a proficiency in English.
+                    </e>
+                </e>
+                <e class="soft-skill-separator"></e>
+                <e class="soft-skill-item">
+                    <e class="soft-skill-name">Independent</e>
+                    <e class="soft-skill-description">
+                        I know the objective, target, and scope of the project I am working on and am able to take pragmatic decisions in consequence. I have the self-confidence to take action, but also know when to ask when needed.
+                    </e>
+                </e>
+                <e class="soft-skill-separator"></e>
+                <e class="soft-skill-item">
+                    <e class="soft-skill-name">Quick Learner</e>
+                    <e class="soft-skill-description">
+                        I can quickly learn new technologies, languages or tools. I go as deep as I can to make my understanding of said technology as efficient and correct as possible.
+                    </e>
+                </e>
+                <e class="soft-skill-separator"></e>
+                <e class="soft-skill-item">
+                    <e class="soft-skill-name">Rigorous</e>
+                    <e class="soft-skill-description">
+                        I know what I do, and do what I know. Writing software is both a matter of getting things done, and doing those things correctly. I always make sure that the solution I come up with is the <i>correct</i> one, and not necessarily the <i>easiest</i> one.
+                    </e>
+                </e>
+            </e>
+        </e>
+    </e>
+    <e id="part3">
+        <e id="tech-container">
+            <e id="tech-title">Technologies</e>
+            <e id="tech-percentages">
+                * Please note that the presented percentages are an indication of my overall knowledge and expertise in the language, not my ability to create complex systems or algorithms.
+            </e>
+            <e id="tech-items">
+                <e class="tech-item">
+                    <e class="tech-item-name">Rust</e>
+                    <e class="tech-info">
+                        <e class="tech-description">
+                            The Rust programming language has been my favorite thing since I started using it in 2018. I consider myself an expert in the language, and am able to write high-performance applications and tools with it. Most notably: an ECS-based game engine and an audio sequencing tool.
+                        </e>
+                        <e class="tech-level"><e class="tech-level-inner" value="98%"></e></e>
+                    </e>
+                </e>
+                <e class="tech-item">
+                    <e class="tech-item-name">C/C++</e>
+                    <e class="tech-info">
+                        <e class="tech-description">
+                            I am proficient in the C and C++ programming languages. I have used both languages equally during my time at School 42 to create video games, shells, 3D renderers, webservers and various libraries.
+                        </e>
+                        <e class="tech-level"><e class="tech-level-inner" value="75%"></e></e>
+                    </e>
+                </e>
+                <e class="tech-item">
+                    <e class="tech-item-name">C#</e>
+                    <e class="tech-info">
+                        <e class="tech-description">
+                            C# will always have a special place in my heart, as it was the first language I used to actually <i>do</i> things. I know the language fairly well and have used it mainly to create games and standalone applications.
+                        </e>
+                        <e class="tech-level"><e class="tech-level-inner" value="60%"></e></e>
+                    </e>
+                </e>
+                <e class="tech-item">
+                    <e class="tech-item-name">HTML/CSS/JS/TS</e>
+                    <e class="tech-info">
+                        <e class="tech-description">
+                            I know how to create static web pages with HTML, CSS and JavaScript. This very resume has been crafted manually with those tools. I have <i>some</i> familiarity with React. I have created a simple multiplayer game powered by websocket using those tools.
+                        </e>
+                        <e class="tech-level"><e class="tech-level-inner" value="50%"></e></e>
+                    </e>
+                </e>
+                <e class="tech-item">
+                    <e class="tech-item-name">Vulkan</e>
+                    <e class="tech-info">
+                        <e class="tech-description">
+                            I know the outline of the Vulkan API, and know how a rendering pipline works, from the vertex shader to surface presentation. I have written a simple 3D renderer using this API for my own game engine (in Rust). This includes writing custom shader programs in GSLS or WSL and compiling them into SPIR-V modules.
+                        </e>
+                        <e class="tech-level"><e class="tech-level-inner" value="45%"></e></e>
+                    </e>
+                </e>
+            </e>
+        </e>
+    </e>
+    <e id="part4">
+        <e id="exp-container">
+            <e id="exp-title">Experiences</e>
+            <e id="exp-items">
+                <e class="exp-item">
+                    <e class="exp-item-name">Optimization</e>
+                    <e class="exp-item-description">
+                        I've always liked optimizing systems, taking every bit of performance I possibly can out of it.
+                        <br><br>
+                        I have a good understanding of how a CPU works, and how my code gets compiled into machine instructions. I think about cache misses, about SIMD, and know how to correctly compare two functions using benchmarks and profiling tools.
+                    </e>
+                </e>
+                <e class="exp-item">
+                    <e class="exp-item-name">Signal Processing</e>
+                    <e class="exp-item-description">
+                        I have written my own simple audio sequencer, including custom effects such as low-pass and high-pass filters, reverb and delay.
+                        <br><br>
+                        More generally, I have some experience with signal processing and have knowledge about the mathematics and physics behind it.
+                    </e>
+                </e>
+                <e class="exp-item">
+                    <e class="exp-item-name">Embedded Systems</e>
+                    <e class="exp-item-description">
+                        I have experience writting and depoying code to bare metal targets such as older consols or microcontrollers.
+                        <br><br>
+                        I also have written my own (pretty buggy) bootloader in Rust for a (very simple and bare bones) operating system project.
+                    </e>
+                </e>
+                <e class="exp-item">
+                    <e class="exp-item-name">Mathematics</e>
+                    <e class="exp-item-description">
+                        I have knowledge in various fields of Mathematics including probabilities, combinatorics, and linear algebra.
+                        <br><br>
+                        Specifically, I use linear algebra extensively every time I work on a game from scratch, or more generally, anytime I write a real-time application.
+                    </e>
+                </e>
+                <e class="exp-item">
+                    <e class="exp-item-name">Real-time Networking</e>
+                    <e class="exp-item-description">
+                        I have experience developing a real-time multiplayer server (and clients to go with it), from scratch, working directly over the TCP protocol.
+                    </e>
+                </e>
+            </e>
+        </e>
+    </e>
+    <e id="part5">
+        <e id="tools-container">
+            <e id="tools-header">
+                <e id="tools-title">Tools</e>
+                <e id="tools-desc">
+                    Programming is best not done alone. I use the following tools on a daily basis to help me create reliable software.
+                </e>
+            </e>
+            <e id="tool-items">
+                <e class="tool-item" style="background-image: url('git.png')"></e>
+                <e class="tool-item" style="background-image: url('github.png')"></e>
+                <e class="tool-item" style="background-image: url('docker.png')"></e>
+                <e class="tool-item" style="background-image: url('linux.png')"></e>
+                <e class="tool-item" style="background-image: url('windows.png')"></e>
+                <e class="tool-item" style="background-image: url('discord.png')"></e>
+            </e>
+        </e>
+    </e>
 </body>
+
+<script>
+    for (const elem of document.querySelectorAll(".tech-level-inner")) {
+        let value = elem.getAttribute("value");
+        elem.innerText = value;
+        elem.style.width = value;
+    }
+</script>
 
 </html>
