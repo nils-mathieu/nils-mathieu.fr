@@ -1,5 +1,9 @@
-use rouille::Response;
+use std::net::{SocketAddr, ToSocketAddrs};
+use std::process::ExitCode;
 
+use tiny_http::{ConfigListenAddr, Header, Response, Server, ServerConfig, SslConfig, StatusCode};
+
+/// Thes files that are specifically authorized.
 const WHITELIST: &[(&str, &str, &str)] = &[
     ("/favicon.ico", "www/favicon.ico", "image/ico"),
     ("/cv/discord.png", "www/cv/discord.png", "image/png"),
@@ -21,16 +25,101 @@ fn route(uri: &str) -> Option<(&'static str, &'static str)> {
         .map(|&(_, path, mime)| (path, mime))
 }
 
-fn main() {
-    let socket_addr =
-        std::env::var("SERVER_ADDR").expect("`SERVER_ADDR` not found in the environment");
+fn main() -> ExitCode {
+    let Ok(socket_addr) = std::env::var("SERVER_ADDR") else {
+        eprintln!("error: no `SERVER_ADDRESS` in the environment");
+        return ExitCode::FAILURE;
+    };
 
-    rouille::start_server(socket_addr, |req| {
-        if let Some((path, mime)) = route(req.raw_url()) {
-            let file = rouille::try_or_404!(std::fs::File::open(path));
-            Response::from_file(mime, file)
-        } else {
-            Response::text("not found").with_status_code(404)
+    let (addr, port) = if let Some((addr, port)) = socket_addr.split_once(':') {
+        let Ok(port) = port.parse::<u16>() else {
+            eprintln!("error: {port}: invalid port");
+            return ExitCode::FAILURE;
+        };
+
+        (addr, port)
+    } else {
+        (socket_addr.as_str(), 80)
+    };
+
+    let addresses: Vec<SocketAddr> = match (addr, port).to_socket_addrs() {
+        Ok(iter) => iter.collect(),
+        Err(err) => {
+            eprintln!("error: {socket_addr}: {err}");
+            return ExitCode::FAILURE;
         }
-    });
+    };
+
+    let Ok(certificate) = std::env::var("SERVER_CERTIFICATE") else {
+        eprintln!("error: no `SERVER_CERTIFICATE` in the environment");
+        return ExitCode::FAILURE;
+    };
+
+    let certificate = match std::fs::read(&certificate) {
+        Ok(ok) => ok,
+        Err(err) => {
+            eprintln!("error: {certificate}: {err}");
+            return ExitCode::FAILURE;
+        }
+    };
+
+    let Ok(private_key) = std::env::var("SERVER_PRIVATE_KEY") else {
+        eprintln!("error: no `SERVER_PRIVATE_KEY` in the environment");
+        return ExitCode::FAILURE;
+    };
+
+    let private_key = match std::fs::read(&private_key) {
+        Ok(ok) => ok,
+        Err(err) => {
+            eprintln!("error: {private_key}: {err}");
+            return ExitCode::FAILURE;
+        }
+    };
+
+    let config = ServerConfig {
+        addr: ConfigListenAddr::IP(addresses),
+        ssl: Some(SslConfig {
+            certificate,
+            private_key,
+        }),
+    };
+
+    let server = match Server::new(config) {
+        Ok(ok) => ok,
+        Err(err) => {
+            eprintln!("error: failed to initiate the server: {err}");
+            return ExitCode::FAILURE;
+        }
+    };
+
+    for req in server.incoming_requests() {
+        match route(req.url()) {
+            Some((path, mime)) => {
+                let file = match std::fs::File::open(path) {
+                    Ok(ok) => ok,
+                    Err(err) => {
+                        eprintln!("error: failed to open `{path}`: {err}");
+                        if let Err(err) = req.respond(Response::empty(StatusCode(500))) {
+                            eprintln!("error: failed to respond: {err}");
+                        };
+                        continue;
+                    }
+                };
+
+                if let Err(err) = req.respond(
+                    Response::from_file(file)
+                        .with_header(Header::from_bytes("Content-Type", mime).unwrap()),
+                ) {
+                    eprintln!("error: failed to respond: {err}");
+                }
+            }
+            None => {
+                if let Err(err) = req.respond(Response::empty(StatusCode(404))) {
+                    eprintln!("error: failed to respond: {err}");
+                }
+            }
+        }
+    }
+
+    ExitCode::SUCCESS
 }

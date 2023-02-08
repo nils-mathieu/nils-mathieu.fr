@@ -5,4 +5,4 @@ edition = "2021"
 version = "0.1.0"
 
 [dependencies]
-rouille = "3"
+tiny_http = "0.12"
