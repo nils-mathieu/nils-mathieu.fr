@@ -1,0 +1,8 @@
+[package]
+name = "nils-mathieu-fr"
+authors = [ "Nils Mathieu <nils.mathieu.contact@gmail.com>" ]
+edition = "2021"
+version = "0.1.0"
+
+[dependencies]
+tiny_http = { version = "0.12", features = ["ssl"] }
