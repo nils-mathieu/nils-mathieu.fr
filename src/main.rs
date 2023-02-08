@@ -4,25 +4,28 @@ use std::process::ExitCode;
 use tiny_http::{ConfigListenAddr, Header, Response, Server, ServerConfig, SslConfig, StatusCode};
 
 /// Thes files that are specifically authorized.
-const WHITELIST: &[(&str, &str, &str)] = &[
-    ("/favicon.ico", "www/favicon.ico", "image/ico"),
-    ("/cv/discord.png", "www/cv/discord.png", "image/png"),
-    ("/cv/docker.png", "www/cv/docker.png", "image/png"),
-    ("/cv/git.png", "www/cv/git.png", "image/png"),
-    ("/cv/github.png", "www/cv/github.png", "image/png"),
-    ("/cv/linux.png", "www/cv/linux.png", "image/png"),
-    ("/cv/spotify.png", "www/cv/spotify.png", "image/png"),
-    ("/cv/windows.png", "www/cv/windows.png", "image/png"),
-    ("/cv/photo.jpg", "www/cv/photo.jpg", "image/jpeg"),
-    ("/cv/", "www/cv/index.html", "text/html"),
-];
+const WHITELIST: &[(&str, &str, &str)] = &[];
 
 /// Routes the provided URI to a static file path.
-fn route(uri: &str) -> Option<(&'static str, &'static str)> {
-    WHITELIST
-        .iter()
-        .find(|&&(route, _, _)| uri == route)
-        .map(|&(_, path, mime)| (path, mime))
+fn route(mut uri: &str) -> Option<(&'static str, &'static str)> {
+    uri = match uri {
+        "/cv" => "/cv/",
+        _ => uri,
+    };
+
+    match uri {
+        "/favicon.ico" => Some(("www/favicon.ico", "image/ico")),
+        "/cv/discord.png" => Some(("www/cv/discord.png", "image/png")),
+        "/cv/docker.png" => Some(("www/cv/docker.png", "image/png")),
+        "/cv/git.png" => Some(("www/cv/git.png", "image/png")),
+        "/cv/github.png" => Some(("www/cv/github.png", "image/png")),
+        "/cv/linux.png" => Some(("www/cv/linux.png", "image/png")),
+        "/cv/spotify.png" => Some(("www/cv/spotify.png", "image/png")),
+        "/cv/windows.png" => Some(("www/cv/windows.png", "image/png")),
+        "/cv/photo.jpg" => Some(("www/cv/photo.jpg", "image/jpeg")),
+        "/cv/" => Some(("www/cv/index.html", "text/html")),
+        _ => None,
+    }
 }
 
 fn main() -> ExitCode {
