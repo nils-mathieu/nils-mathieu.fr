@@ -732,6 +732,39 @@
         background-size: contain;
         background-position: center;
     }
+
+    #download-pdf-container {
+        position: absolute;
+        top: 50%;
+        right: 45px;
+        transform: translate(0px, -50%);
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+
+        cursor: pointer;
+
+        text-decoration: none;
+    }
+
+    #download-pdf-icon {
+        display: block;
+
+        width: 40px;
+        height: 40px;
+
+        background-image: url("dl.png");
+        background-position: center;
+        background-size: cover;
+    }
+
+    #download-pdf-text {
+        font-family: 'Lexend', sans-serif;
+        font-size: 16px;
+        color: var(--black);
+        text-align: center;
+    }
 </style>
 
 <body>
@@ -771,6 +804,10 @@
                     <a class="introduction-tag" href="#rust">WASM</a>
                 </e>
             </e>
+            <a target="_blank" href="cv.pdf" id="download-pdf-container">
+                <e id="download-pdf-icon"></e>
+                <e id="download-pdf-text">PDF</e>
+            </a>
         </e>
         <e id="about-me-container">
             <e id="about-me-first-row">
