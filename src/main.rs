@@ -61,9 +61,9 @@ fn route(uri: &str) -> Route {
             path: "www/cv/notion.png",
             content_type: "image/png",
         },
-        "/cv/man-thinking.jpg" => Route::File {
-            path: "www/cv/man-thinking.jpg",
-            content_type: "image/jpeg",
+        "/cv/man-thinking.png" => Route::File {
+            path: "www/cv/man-thinking.png",
+            content_type: "image/png",
         },
         "/cv/presentation.png" => Route::File {
             path: "www/cv/presentation.png",
@@ -75,6 +75,10 @@ fn route(uri: &str) -> Route {
         },
         "/cv/mail.png" => Route::File {
             path: "www/cv/mail.png",
+            content_type: "image/png",
+        },
+        "/cv/dl.png" => Route::File {
+            path: "www/cv/dl.png",
             content_type: "image/png",
         },
         "/cv/" => Route::File {
