@@ -3,30 +3,86 @@ use std::process::ExitCode;
 
 use tiny_http::{ConfigListenAddr, Header, Response, Server, ServerConfig, SslConfig, StatusCode};
 
-/// Routes the provided URI to a static file path.
-fn route(mut uri: &str) -> Option<(&'static str, &'static str)> {
-    uri = match uri {
-        "/cv" => "/cv/",
-        _ => uri,
-    };
+/// Describes how to respond to a specific request.
+pub enum Route {
+    /// Respond with a file.
+    File {
+        /// The path to the file in the file system.
+        path: &'static str,
+        /// The content type of the file.
+        content_type: &'static str,
+    },
+    /// Request a redirection.
+    Redirect(&'static str),
+    /// A simple status code.
+    NotFound,
+}
 
+/// Routes the provided URI to a static file path.
+fn route(uri: &str) -> Route {
     match uri {
-        "/favicon.ico" => Some(("www/favicon.ico", "image/ico")),
-        "/cv/discord.png" => Some(("www/cv/discord.png", "image/png")),
-        "/cv/docker.png" => Some(("www/cv/docker.png", "image/png")),
-        "/cv/git.png" => Some(("www/cv/git.png", "image/png")),
-        "/cv/github.png" => Some(("www/cv/github.png", "image/png")),
-        "/cv/linux.png" => Some(("www/cv/linux.png", "image/png")),
-        "/cv/spotify.png" => Some(("www/cv/spotify.png", "image/png")),
-        "/cv/windows.png" => Some(("www/cv/windows.png", "image/png")),
-        "/cv/photo.jpg" => Some(("www/cv/photo.jpg", "image/jpeg")),
-        "/cv/notion.png" => Some(("www/cv/notion.png", "image/png")),
-        "/cv/man-thinking.jpg" => Some(("www/cv/man-thinking.jpg", "image/jpeg")),
-        "/cv/presentation.png" => Some(("www/cv/presentation.png", "image/png")),
-        "/cv/tel.png" => Some(("www/cv/tel.png", "image/png")),
-        "/cv/mail.png" => Some(("www/cv/mail.png", "image/png")),
-        "/cv/" => Some(("www/cv/index.html", "text/html")),
-        _ => None,
+        "/favicon.ico" => Route::File {
+            path: "www/favicon.ico",
+            content_type: "image/ico",
+        },
+        "/cv/discord.png" => Route::File {
+            path: "www/cv/discord.png",
+            content_type: "image/png",
+        },
+        "/cv/docker.png" => Route::File {
+            path: "www/cv/docker.png",
+            content_type: "image/png",
+        },
+        "/cv/git.png" => Route::File {
+            path: "www/cv/git.png",
+            content_type: "image/png",
+        },
+        "/cv/github.png" => Route::File {
+            path: "www/cv/github.png",
+            content_type: "image/png",
+        },
+        "/cv/linux.png" => Route::File {
+            path: "www/cv/linux.png",
+            content_type: "image/png",
+        },
+        "/cv/spotify.png" => Route::File {
+            path: "www/cv/spotify.png",
+            content_type: "image/png",
+        },
+        "/cv/windows.png" => Route::File {
+            path: "www/cv/windows.png",
+            content_type: "image/png",
+        },
+        "/cv/photo.jpg" => Route::File {
+            path: "www/cv/photo.jpg",
+            content_type: "image/jpeg",
+        },
+        "/cv/notion.png" => Route::File {
+            path: "www/cv/notion.png",
+            content_type: "image/png",
+        },
+        "/cv/man-thinking.jpg" => Route::File {
+            path: "www/cv/man-thinking.jpg",
+            content_type: "image/jpeg",
+        },
+        "/cv/presentation.png" => Route::File {
+            path: "www/cv/presentation.png",
+            content_type: "image/png",
+        },
+        "/cv/tel.png" => Route::File {
+            path: "www/cv/tel.png",
+            content_type: "image/png",
+        },
+        "/cv/mail.png" => Route::File {
+            path: "www/cv/mail.png",
+            content_type: "image/png",
+        },
+        "/cv/" => Route::File {
+            path: "www/cv/index.html",
+            content_type: "text/html",
+        },
+        "/cv" => Route::Redirect("/cv/"),
+        _ => Route::NotFound,
     }
 }
 
@@ -101,7 +157,7 @@ fn main() -> ExitCode {
 
     for req in server.incoming_requests() {
         match route(req.url()) {
-            Some((path, mime)) => {
+            Route::File { path, content_type } => {
                 let file = match std::fs::File::open(path) {
                     Ok(ok) => ok,
                     Err(err) => {
@@ -115,12 +171,19 @@ fn main() -> ExitCode {
 
                 if let Err(err) = req.respond(
                     Response::from_file(file)
-                        .with_header(Header::from_bytes("Content-Type", mime).unwrap()),
+                        .with_header(Header::from_bytes("Content-Type", content_type).unwrap()),
                 ) {
                     eprintln!("error: failed to respond: {err}");
                 }
             }
-            None => {
+            Route::Redirect(to) => {
+                let response =
+                    Response::empty(301).with_header(Header::from_bytes("Location", to).unwrap());
+                if let Err(err) = req.respond(response) {
+                    eprintln!("error: failed to respond: {err}");
+                }
+            }
+            Route::NotFound => {
                 if let Err(err) = req.respond(Response::empty(StatusCode(404))) {
                     eprintln!("error: failed to respond: {err}");
                 }
