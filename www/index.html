@@ -31,21 +31,6 @@
             </tr>
         </table>
 
-        <div id="links">
-            <a href="https://github.com/nils-mathieu/">
-                <img src=" /static/github.png">
-            </a>
-            <a href="https://open.spotify.com/artist/6UXi6QAxIcY2Lf0AFS3TH9?si=E0P5qFvDQGKhpb6p-_Vjng">
-                <img src="/static/spotify.png">
-            </a>
-            <a href="https://www.youtube.com/@silyn-sounds">
-                <img src="/static/youtube.png">
-            </a>
-            <a href="https://soundcloud.com/silyn-music">
-                <img src="/static/soundcloud.png">
-            </a>
-        </div>
-
         <h2>⌨️ Cool Projects</h2>
 
         <ul class="project-container">
@@ -97,6 +82,21 @@
         </ul>
 
         <footer>
+            <div id="links">
+                <a href="https://github.com/nils-mathieu/">
+                    <img src=" /static/github.png">
+                </a>
+                <a href="https://open.spotify.com/artist/6UXi6QAxIcY2Lf0AFS3TH9?si=E0P5qFvDQGKhpb6p-_Vjng">
+                    <img src="/static/spotify.png">
+                </a>
+                <a href="https://www.youtube.com/@silyn-sounds">
+                    <img src="/static/youtube.png">
+                </a>
+                <a href="https://soundcloud.com/silyn-music">
+                    <img src="/static/soundcloud.png">
+                </a>
+            </div>
+
             <p>Made with ❤️ by <span>Nils Mathieu</span>. Source code availabe in <a
                     href="https://github.com/nils-mathieu/nils-mathieu.fr">GitHub</a>.</p>
         </footer>
@@ -107,6 +107,7 @@
 <style>
     #about-me-table {
         font-size: 16px;
+        margin-bottom: 3em;
     }
 
     #about-me-table td:first-child {
@@ -114,31 +115,6 @@
         text-align: right;
         width: 200px;
         padding-right: 2em;
-    }
-
-    #links {
-        margin-left: 1em;
-
-        display: flex;
-        flex-direction: row;
-        gap: 1em;
-
-        margin: 2em 0 5em 5em;
-    }
-
-    #links img {
-        width: 30px;
-        height: 30px;
-    }
-
-    #links a {
-        opacity: 0.3;
-
-        transition: 0.2s;
-    }
-
-    #links a:hover {
-        opacity: 1;
     }
 
     .project-container {
@@ -212,6 +188,32 @@
         font-weight: bold;
 
         text-align: center;
+    }
+
+    #links {
+        margin-left: 1em;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1em;
+
+        margin: 8em 2em 2em 2em;
+    }
+
+    #links img {
+        width: 30px;
+        height: 30px;
+    }
+
+    #links a {
+        opacity: 0.3;
+
+        transition: 0.2s;
+    }
+
+    #links a:hover {
+        opacity: 1;
     }
 
     footer {
