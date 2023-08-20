@@ -1,0 +1,66 @@
+body {
+    background-color: black;
+    color: white;
+
+    font-family: monospace;
+
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+table {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+#container {
+    min-width: 600px;
+    width: 50%;
+
+    margin: auto;
+}
+
+h1 {
+    background-color: white;
+    color: black;
+    display: inline-block;
+    padding: 0 0.5em;
+
+    font-size: 3rem;
+
+    margin: 2em 0;
+}
+
+h2 {
+    margin-bottom: 1em;
+    padding-left: 1em;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+
+    background-color: white;
+    color: black;
+    outline: none;
+    border: none;
+
+    cursor: pointer;
+    padding: 0.5em 1em;
+}
+
+a {
+    text-decoration: inherit;
+}

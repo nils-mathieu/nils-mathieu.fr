@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/master.css">
+    <title>Nils Mathieu</title>
+</head>
+
+<body>
+    <div id="container">
+        <p>I think you got lost.</p>
+        <p><button onclick="location.pathname = '/'">Go Back Home</button></p>
+    </div>
+</body>
+
+<style>
+    p {
+        font-size: 2rem;
+        text-align: center;
+
+        margin-top: 2em;
+    }
+
+    button {
+        background-color: white;
+        color: black;
+        padding: 0.5em 1em;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 0.2em;
+        user-select: none;
+        font-size: 1.3rem;
+
+        transform: scale(1);
+        transition: 0.2s;
+
+    }
+
+    button:hover {
+        transform: scale(1.02);
+    }
+</style>
+
+</html>

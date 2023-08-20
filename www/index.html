@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/master.css">
+    <title>Nils Mathieu</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <h1>Nils Mathieu</h1>
+
+        <h2>🌿 About Me</h2>
+
+        <table id="about-me-table">
+            <tr>
+                <td>Age</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>Paris, France</td>
+            </tr>
+            <tr>
+                <td>E-Mail</td>
+                <td>nils.mathieu.contact@gmail.com</td>
+            </tr>
+        </table>
+
+        <div id="links">
+            <a href="https://github.com/nils-mathieu/">
+                <img src=" /static/github.png">
+            </a>
+            <a href="https://open.spotify.com/artist/6UXi6QAxIcY2Lf0AFS3TH9?si=E0P5qFvDQGKhpb6p-_Vjng">
+                <img src="/static/spotify.png">
+            </a>
+            <a href="https://www.youtube.com/@silyn-sounds">
+                <img src="/static/youtube.png">
+            </a>
+        </div>
+
+        <h2>⌨️ Cool Projects</h2>
+
+        <ul class="project-container">
+            <a href="https://github.com/nils-mathieu/blocktale">
+                <li class="project">
+                    <img src="">
+                    <div class="project-overlay">
+                        <p>Voxel Renderer</p>
+                    </div>
+                </li>
+            </a>
+            <a href="">
+                <li class="project">
+                    <img src="">
+                    <div class="project-overlay">
+                        <p>Operating System</p>
+                    </div>
+                </li>
+            </a>
+            <a href="https://github.com/nils-mathieu/piscine-rust">
+                <li class="project">
+                    <img src="/static/piscine-rust.jpg">
+                    <div class="project-overlay">
+                        <p>Rust Piscine</p>
+                    </div>
+                </li>
+            </a>
+        </ul>
+
+        <h2>🎶 Cool Music</h2>
+
+        <ul class="project-container">
+            <a href="https://ditto.fm/flavor-of-air">
+                <li class="project">
+                    <img src="/static/flavor-of-air.jpg">
+                    <div class="project-overlay">
+                        <p>Flavor Of Air</p>
+                    </div>
+                </li>
+            </a>
+            <a href="https://ditto.fm/heart-of-a-soul">
+                <li class="project">
+                    <img src="/static/heart-of-a-soul.jpg">
+                    <div class="project-overlay">
+                        <p>Heart Of A Soul</p>
+                    </div>
+                </li>
+            </a>
+        </ul>
+
+        <footer>
+            <p>Made with ❤️ by <span>Nils Mathieu</span>.</p>
+        </footer>
+    </div>
+
+</body>
+
+<style>
+    #about-me-table {
+
+        font-size: 16px;
+    }
+
+    #about-me-table td:first-child {
+        font-weight: bold;
+        text-align: right;
+        width: 200px;
+        padding-right: 2em;
+    }
+
+    #links {
+        margin-left: 1em;
+
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+
+        margin: 2em 0 5em 5em;
+    }
+
+    #links img {
+        width: 30px;
+        height: 30px;
+    }
+
+    #links a {
+        opacity: 0.3;
+
+        transition: 0.2s;
+    }
+
+    #links a:hover {
+        opacity: 1;
+    }
+
+    .project-container {
+        display: flex;
+
+        flex-wrap: wrap;
+        justify-content: left;
+        gap: 1em;
+
+        margin-bottom: 3em;
+
+        font-size: 16px;
+    }
+
+    .project {
+        position: relative;
+        width: 280px;
+        height: 200px;
+
+        cursor: pointer;
+
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+
+        border-radius: 15px;
+
+        overflow: hidden;
+    }
+
+    .project:hover {
+        transform: scale(1.02);
+    }
+
+    .project img {
+        object-fit: cover;
+
+        width: 100%;
+        height: 100%;
+    }
+
+    .project-overlay {
+        position: absolute;
+
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        opacity: 0;
+
+        background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+    }
+
+    .project:hover .project-overlay {
+        opacity: 1;
+    }
+
+    .project-overlay p {
+        position: absolute;
+        bottom: 1em;
+        left: 50%;
+        transform: translateX(-50%);
+
+        color: white;
+
+        user-select: none;
+
+        font-weight: bold;
+
+        text-align: center;
+    }
+
+    footer {
+        text-align: center;
+        margin: 1em 0;
+
+        color: gray;
+    }
+
+    footer span {
+        color: white;
+    }
+</style>
+
+</html>

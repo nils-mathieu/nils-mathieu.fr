@@ -1,8 +1,23 @@
 [package]
 name = "nils-mathieu-fr"
-authors = [ "Nils Mathieu <nils.mathieu.contact@gmail.com>" ]
+authors = ["Nils Mathieu <nils.mathieu.contact@gmail.com>"]
 edition = "2021"
 version = "0.1.0"
 
 [dependencies]
-tiny_http = { version = "0.12", features = ["ssl"] }
+axum = { version = "0.6", default-features = false, features = [
+    "tokio",
+    "http1",
+    "http2",
+] }
+tokio = { version = "1", features = [
+    "rt-multi-thread",
+    "macros",
+    "fs",
+    "net",
+    "signal",
+] }
+tower-http = { version = "0.4", features = ["fs"] }
+tower-service = "0.3"
+serde = { version = "1", features = ["derive"] }
+ron = "0.8"
