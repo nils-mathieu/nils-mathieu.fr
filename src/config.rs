@@ -14,7 +14,7 @@ impl Config {
     /// # Panics
     ///
     /// This function panics if the configuration file cannot be read.
-    pub fn load() -> ron::error::SpannedResult<Self> {
+    pub fn try_load() -> ron::error::SpannedResult<Self> {
         let file = std::fs::File::open("config.ron")?;
         ron::de::from_reader(file)
     }

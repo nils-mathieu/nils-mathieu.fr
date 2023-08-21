@@ -21,3 +21,10 @@ tower-http = { version = "0.4", features = ["fs"] }
 tower-service = "0.3"
 serde = { version = "1", features = ["derive"] }
 ron = "0.8"
+tracing = { version = "0.1", default-features = false, features = ["std"] }
+tracing-subscriber = { version = "0.3", default-features = false, features = [
+    "fmt",
+    "smallvec",
+    "ansi",
+    "std",
+] }
