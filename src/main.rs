@@ -2,14 +2,19 @@ use std::panic::PanicInfo;
 use std::process::ExitCode;
 
 mod config;
+use axum_server::tls_rustls::RustlsConfig;
+
 use self::config::Config;
 
 mod app;
 
-/// A future that returns when the server receives a shutdown signal.
-async fn graceful_shutdown() {
+/// A future that updates the [`axum_server::Handle`] when a graceful shutdown is requested.
+async fn graceful_shutdown_task(handle: axum_server::Handle) {
     match tokio::signal::ctrl_c().await {
-        Ok(_) => (),
+        Ok(_) => {
+            tracing::info!("received CTRL+C signal, shutting down the server gracefully");
+            handle.graceful_shutdown(None);
+        }
         Err(err) => {
             tracing::error!("failed to receive graceful shutdown: {}", err);
             tracing::error!("forced shutdown will crash the server");
@@ -51,11 +56,24 @@ async fn main() -> ExitCode {
         }
     };
 
+    // Load the SSL certificate and key.
+    let ssl_config = match RustlsConfig::from_pem_file(&config.ssl_cert, &config.ssl_key).await {
+        Ok(config) => config,
+        Err(err) => {
+            tracing::error!("failed to load SSL certificate and key: {}", err);
+            return ExitCode::FAILURE;
+        }
+    };
+
+    // Create and setup the handle that will be used to control the server.
+    let handle = axum_server::Handle::new();
+    tokio::spawn(graceful_shutdown_task(handle.clone()));
+
     // Start the HTTP server.
     tracing::info!("binding to address: {}", config.address);
-    if let Err(err) = axum::Server::bind(&config.address)
+    if let Err(err) = axum_server::bind_rustls(config.address, ssl_config)
+        .handle(handle)
         .serve(self::app::app().into_make_service())
-        .with_graceful_shutdown(graceful_shutdown())
         .await
     {
         tracing::error!("server error: {}", err);

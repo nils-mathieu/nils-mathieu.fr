@@ -1,3 +1,5 @@
 /target
 /Cargo.lock
 /config.ron
+/key.pem
+/cert.pem

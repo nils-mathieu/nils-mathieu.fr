@@ -6,10 +6,10 @@ version = "0.1.0"
 
 [dependencies]
 axum = { version = "0.6", default-features = false, features = [
-    "tokio",
     "http1",
     "http2",
 ] }
+axum-server = { version = "0.5", features = ["tls-rustls"] }
 tokio = { version = "1", features = [
     "rt-multi-thread",
     "macros",
