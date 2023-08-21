@@ -12,7 +12,7 @@
 <body>
     <div id="container">
         <p>I think you got lost.</p>
-        <p><button onclick="location.pathname = '/'">Go Back Home</button></p>
+        <div id="link-container"><a href="/">Go Back Home</a></div>
     </div>
 </body>
 
@@ -24,7 +24,13 @@
         margin-top: 2em;
     }
 
-    button {
+    #link-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 2em;
+    }
+
+    a {
         background-color: white;
         color: black;
         padding: 0.5em 1em;
@@ -36,11 +42,10 @@
 
         transform: scale(1);
         transition: 0.2s;
-
     }
 
-    button:hover {
-        transform: scale(1.02);
+    a:hover {
+        transform: scale(1.05);
     }
 </style>
 
