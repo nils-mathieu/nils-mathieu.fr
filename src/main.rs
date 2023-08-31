@@ -65,6 +65,8 @@ async fn main() -> ExitCode {
         }
     };
 
+    let http_config = axum_server::HttpConfig::new().http2_only(true).build();
+
     // Create and setup the handle that will be used to control the server.
     let handle = axum_server::Handle::new();
     tokio::spawn(graceful_shutdown_task(handle.clone()));
@@ -72,6 +74,7 @@ async fn main() -> ExitCode {
     // Start the HTTP server.
     tracing::info!("binding to address: {}", config.address);
     if let Err(err) = axum_server::bind_rustls(config.address, ssl_config)
+        .http_config(http_config)
         .handle(handle)
         .serve(self::app::app().into_make_service())
         .await
